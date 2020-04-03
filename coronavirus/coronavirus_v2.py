@@ -21,6 +21,7 @@ for line in handle:
         aux = linea[5].rstrip("\n")
         recuperados.append(int(aux))
     cont += 1
+handle.close()
 
 max_casos = max(casos)
 

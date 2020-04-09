@@ -54,6 +54,11 @@ ejeX.penup()
 ejeX.goto(margen, margen)
 ejeX.pendown()
 
+ejeX2 = turtle.Turtle()
+ejeX2.hideturtle()
+ejeX2.penup()
+ejeX2.goto(margen, 0)
+
 ejeY = turtle.Turtle()
 ejeY.hideturtle()
 ejeY.color("red")
@@ -68,7 +73,7 @@ ejeY2.penup()
 ejeY2.goto(ancho - margen * 2, margen)
 ejeY2.pendown()
 
-coeficienteX = (ancho - margen) / cont
+coeficienteX = (ancho - margen * 2) / cont
 coeficienteY = (alto - margen * 3) / max(casos)
 coeficienteY2 = (alto - margen * 3) / max(fallecidos)
 
@@ -80,7 +85,7 @@ for x in range(0, max(casos), 1000):
 for x in range(0, max(fallecidos), 100):    
     ejeY2.goto(ancho - margen * 2, margen + (x * coeficienteY2))
     ejeY2.dot()
-    ejeY2.write( x, False, "left")
+    ejeY2.write(x, False, "left")
 
 grafica1 = turtle.Turtle()
 grafica1.color("red")
@@ -98,6 +103,7 @@ grafica2.penup()
 grafica2.goto(margen, margen)
 grafica2.pendown()
 
+mes = "00"
 for x in range(cont - 1):
     
     grafica1.goto(x * coeficienteX + margen, margen + (casos[x] * coeficienteY))
@@ -112,7 +118,10 @@ for x in range(cont - 1):
         
     ejeX.goto(x * coeficienteX + margen, margen)
     ejeX.dot()
-    ejeX.write(fecha[x][0:2], False, "center")
+    if x%2!=0:
+        ejeX2.goto(x * coeficienteX + margen, 0)
+        ejeX2.write(fecha[x][0:2], False, "center")
+        mes = fecha[x][3:2]
 
 titulo1 = turtle.Turtle()
 titulo1.hideturtle()
